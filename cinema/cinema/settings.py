@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'showtimes',
     'tickets',
     'cinemas',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
