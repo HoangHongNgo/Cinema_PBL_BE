@@ -9,4 +9,4 @@ class Movie(models.Model):
     release_date = models.DateField()
     duration_minute = models.PositiveIntegerField()
     age_limit = models.IntegerField()
-    cover_image = models.ImageField(upload_to='movie_covers/', default='')
+    cover_image = models.ImageField(upload_to='movie_covers/', default='',blank=True)

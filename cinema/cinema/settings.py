@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tickets',
     'cinemas',
     'users',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
