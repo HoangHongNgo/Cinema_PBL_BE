@@ -1,6 +1,6 @@
 from django.db import models
 from movies.models import Movie
-from cinemas.models import Cinema as Cinema
+from cinemas.models import Cinema
 # Create your models here.
 
 
