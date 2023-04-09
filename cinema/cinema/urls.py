@@ -37,5 +37,6 @@ urlpatterns = [
                                          cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
     path('movies/', include('movies.urls')),
+    path('cinemas/', include('cinemas.urls')),
     path('user/', include('users.urls')),
 ]
