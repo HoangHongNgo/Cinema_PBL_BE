@@ -60,5 +60,5 @@ python manage.py createsuperuser
 Access the admin site
 
 ```bash
-http://127.0.0.1:8000/admin/
+http://localhost:8000/admin/
 ```
