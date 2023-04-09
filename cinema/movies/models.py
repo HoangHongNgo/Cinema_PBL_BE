@@ -15,5 +15,7 @@ class Movie(models.Model):
         upload_to='movie_covers/', default='', blank=True)
     banner_image = models.ImageField(
         upload_to='movie_banners/', default='', blank=True)
-    casts = models.ManyToManyField(Cast, related_name='casts')
-    director = models.ManyToManyField(Cast, related_name='directors')
+    casts = models.ManyToManyField(
+        Cast, related_name='casts', null=True, blank=True)
+    director = models.ManyToManyField(
+        Cast, related_name='directors', null=True, blank=True)
