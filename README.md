@@ -55,7 +55,7 @@ To access the API documentation:
 http://localhost:8000/swagger/
 ```
 
-## Add mock data by admin view
+## Add mock data throught admin view
 
 Create a super user:
 
