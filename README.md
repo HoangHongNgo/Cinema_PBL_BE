@@ -40,8 +40,25 @@ DATABASES = {
 }
 ```
 
+## Access Swagger View
+
 To access the API documentation:
 
 ```bash
 http://localhost:8000/swagger/
+```
+
+## Add mock data by admin view
+
+Create a super user:
+
+```bash
+cd cinema
+python manage.py createsuperuser
+```
+
+Access the admin site
+
+```bash
+http://127.0.0.1:8000/admin/
 ```
