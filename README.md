@@ -25,12 +25,6 @@ Update the requirements.txt by:
 pip freeze > requirements.txt
 ```
 
-Run the server:
-
-```bash
-python manage.py runserver
-```
-
 Customize database connection in **settings.py**:
 
 ```python
@@ -38,6 +32,19 @@ DATABASES = {
     'default': {
     }
 }
+```
+
+Migrate database:
+
+```bash
+cd cinema
+python manage.py migrate
+```
+
+Run the server:
+
+```bash
+python manage.py runserver
 ```
 
 ## Access Swagger View
