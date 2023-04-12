@@ -1,4 +1,4 @@
-# Covelo Backend
+# CineHolic Backend
 
 ## Installation
 
@@ -64,7 +64,7 @@ cd cinema
 python manage.py createsuperuser
 ```
 
-Access the admin site
+Access the admin site:
 
 ```bash
 http://localhost:8000/admin/
