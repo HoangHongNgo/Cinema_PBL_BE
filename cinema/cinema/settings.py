@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework.authtoken',
+    'blogs',
     'casts',
     'cinema',
     'movies',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'tickets',
     'cinemas',
     'users',
+    'tags',
     'rest_framework',
     'drf_yasg',
 ]
@@ -173,5 +175,5 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000/', 'https://main--lively-kelpie-9855bd.netlify.app/'
+    'http://localhost:3000', 'https://main--lively-kelpie-9855bd.netlify.app'
 ]

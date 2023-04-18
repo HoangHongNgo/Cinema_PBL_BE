@@ -1,5 +1,6 @@
 from django.db import models
 from casts.models import Cast
+from tags.models import Tag
 
 
 class Movie(models.Model):
@@ -14,6 +15,7 @@ class Movie(models.Model):
     cover_image = models.TextField()
     banner_image = models.TextField()
     casts = models.ManyToManyField(
-        Cast, related_name='casts', null=True, blank=True)
-    director = models.ManyToManyField(
-        Cast, related_name='directors', null=True, blank=True)
+        Cast, related_name='casts', blank=True)
+    directors = models.ManyToManyField(
+        Cast, related_name='directors', blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
