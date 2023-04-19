@@ -21,6 +21,12 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MovieNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['name']
+
+
 class MovieTrailerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie

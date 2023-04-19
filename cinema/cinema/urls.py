@@ -39,4 +39,6 @@ urlpatterns = [
     path('movies/', include('movies.urls')),
     path('cinemas/', include('cinemas.urls')),
     path('user/', include('users.urls')),
+    path('blogs/', include('blogs.urls')),
+    path('shows/', include('showtimes.urls')),
 ]
