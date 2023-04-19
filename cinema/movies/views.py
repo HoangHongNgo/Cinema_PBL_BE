@@ -40,3 +40,9 @@ class MovieBannerView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
     queryset = Movie.objects.all()
     serializer_class = MovieBannerSerializer
+
+
+class MovieDetailView(generics.RetrieveAPIView):
+    permission_classes = [AllowAny]
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
