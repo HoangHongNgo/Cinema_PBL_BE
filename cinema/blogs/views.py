@@ -6,13 +6,7 @@ from rest_framework.permissions import AllowAny
 # Create your views here.
 
 
-class BlogListView(generics.ListAPIView):
-    permission_classes = [AllowAny]
-    queryset = Blog.objects.all()
-    serializer_class = BlogListSerializer
-
-
-class BlogDetailView(generics.RetrieveAPIView):
+class BlogView(generics.ListAPIView):
     permission_classes = [AllowAny]
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
