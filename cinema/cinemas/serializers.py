@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import City, Cinema
+from .models import *
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -14,3 +14,11 @@ class CinemaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cinema
         fields = '__all__'
+
+
+class CinemaChainSerializer(serializers.ModelSerializer):
+    cinemas = CinemaSerializer(many=True)
+
+    class Meta:
+        model = Cinema_Chain
+        fields = ['name', 'rating', 'logo_path', 'cinemas']

@@ -1,6 +1,6 @@
 from rest_framework import generics, filters
-from .models import City, Cinema
-from .serializers import CitySerializer, CinemaSerializer
+from .models import *
+from .serializers import *
 from rest_framework.permissions import AllowAny
 
 # Create your views here.
@@ -20,8 +20,8 @@ class CityDetail(generics.RetrieveAPIView):
 
 class CinemaList(generics.ListAPIView):
     permission_classes = [AllowAny]
-    queryset = Cinema.objects.all()
-    serializer_class = CinemaSerializer
+    queryset = Cinema_Chain.objects.order_by("rating")
+    serializer_class = CinemaChainSerializer
 
 
 class CinemaByCity(generics.ListAPIView):
@@ -38,5 +38,5 @@ class CinemaByCity(generics.ListAPIView):
 
 class CinemaDetail(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
-    queryset = Cinema.objects.all()
+    queryset = Cinema_Chain.objects.all()
     serializer_class = CinemaSerializer
