@@ -177,3 +177,6 @@ AUTH_USER_MODEL = 'users.User'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', 'https://main--lively-kelpie-9855bd.netlify.app'
 ]
+
+# CORS ALLOW ALL ORIGIN
+CORS_ALLOW_ALL_ORIGINS: True

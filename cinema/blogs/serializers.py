@@ -1,13 +1,14 @@
 from rest_framework import serializers
 from .models import Blog
-from users.serializers import *
-from movies.serializers import *
+from users.serializers import UserNameSerializer
+from movies.serializers import MovieNameSerializer
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    author = UserNameSerializer
-    movie = MovieNameSerializer
+    author = UserNameSerializer()
+    movies = MovieNameSerializer(many=True)
 
     class Meta:
         model = Blog
-        fields = '__all__'
+        fields = ['title', 'summary', 'content', 'author',
+                  'created_at', 'updated_at', 'categories', 'images', 'movies']
