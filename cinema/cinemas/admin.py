@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Cinema)
 admin.site.register(City)
 admin.site.register(Cinema_Room)
+admin.site.register(Cinema_Chain)
