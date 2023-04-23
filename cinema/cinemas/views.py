@@ -26,13 +26,14 @@ class CinemaList(generics.ListAPIView):
 
 class CinemaByCity(generics.ListAPIView):
     permission_classes = [AllowAny]
-    serializer_class = CinemaSerializer
+    serializer_class = CinemaChainSerializer
 
     def get_queryset(self):
         city = self.request.query_params.get('city')
-        queryset = Cinema.objects.all()
+        queryset = Cinema_Chain.objects.order_by(
+            "rating")
         if city is not None:
-            queryset = queryset.filter(city__id=city)
+            queryset = queryset.filter(cinema__city__id=city)
         return queryset
 
 
