@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from movies.models import Movie
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -24,6 +25,6 @@ class Blog(models.Model):
 
 
 class BlogImage(models.Model):
-    image = models.ImageField(upload_to='blog/')
+    image = CloudinaryField('image')
     blog = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name='images')

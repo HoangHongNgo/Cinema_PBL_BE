@@ -14,6 +14,9 @@ import environ
 import dj_database_url
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -201,3 +204,12 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+# CLOUDINARY SETUP
+cloudinary.config(
+
+    cloud_name='de59jbjlb',
+    api_key='528369182579429',
+    api_secret='C6tAHW0emKlM-DqLHyOkQY5GniA',
+
+)
