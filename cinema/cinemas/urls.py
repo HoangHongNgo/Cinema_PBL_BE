@@ -6,5 +6,4 @@ urlpatterns = [
     path('cities/<int:pk>/', CityDetail.as_view()),
     path('cinema/', CinemaList.as_view()),
     path('cinema/<int:pk>/', CinemaDetail.as_view()),
-    path('cinema/search/', CinemaByCity.as_view()),
 ]

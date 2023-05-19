@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import *
 
 
-class ShowSerializer(serializers.Serializer):
+class ShowtimeSerializer(serializers.Serializer):
     class Meta:
         models = Showtime
-        fields = '__all__'
+        fields = ['id', 'start_time']

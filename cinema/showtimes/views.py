@@ -8,5 +8,14 @@ from rest_framework.permissions import AllowAny
 
 class ShowView(generics.ListAPIView):
     permission_classes = [AllowAny]
-    queryset = Showtime.objects.all()
-    serializer_class = ShowSerializer
+    serializer_class = ShowtimeSerializer
+
+    def get_queryset(self):
+        queryset = Showtime.objects.all()
+        cinema = self.request.query_params.get('cinema')
+        movie = self.request.query_params.get('movie')
+        if cinema is not None:
+            queryset = queryset.filter(Cinema_Room__cinema=cinema)
+        if movie is not None:
+            queryset = queryset.filter(movie=movie)
+        return queryset

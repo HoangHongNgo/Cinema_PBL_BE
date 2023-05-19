@@ -9,8 +9,6 @@ class CitySerializer(serializers.ModelSerializer):
 
 
 class CinemaSerializer(serializers.ModelSerializer):
-    city_name = serializers.CharField(source='city.name')
-
     class Meta:
         model = Cinema
         fields = '__all__'
