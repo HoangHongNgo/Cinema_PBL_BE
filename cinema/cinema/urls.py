@@ -41,4 +41,5 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('blogs/', include('blogs.urls')),
     path('shows/', include('showtimes.urls')),
+    path('tickets/', include('tickets.urls')),
 ]
