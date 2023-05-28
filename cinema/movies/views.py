@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status, generics
 from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+from .utils import create_movie_graph, visualize
 # Create your views here.
 
 
@@ -46,3 +48,15 @@ class MovieDetailView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+
+
+class MovieRdfAPIView(APIView):
+    def get(self, request, format=None):
+        # Assuming you have a Movie instance
+
+        # Generate the RDF graph
+        movie_graph = create_movie_graph()
+
+        visualize(movie_graph)
+
+        return Response()
