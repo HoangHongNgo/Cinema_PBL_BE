@@ -34,3 +34,6 @@ class BuyTicketsAPIView(APIView):
             return Response({"ticket_id": ticket.id, "message": "Ticket purchased successfully."})
         else:
             return Response(serializer.errors, status=400)
+
+
+
