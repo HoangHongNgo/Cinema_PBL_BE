@@ -25,3 +25,9 @@ class ShowView(generics.ListAPIView):
             date_obj = datetime.strptime(date, '%Y-%m-%d')
             queryset = queryset.filter(start_time__date=date_obj.date())
         return queryset
+
+
+class ShowDetailView(generics.RetrieveAPIView):
+    permission_classes = [AllowAny]
+    queryset = Showtime.objects.all()
+    serializer_class = ShowtimeSerializer
