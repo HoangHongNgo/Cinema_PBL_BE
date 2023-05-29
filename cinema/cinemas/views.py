@@ -45,5 +45,5 @@ class CinemaByCity(generics.ListAPIView):
 
 class CinemaDetail(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
-    queryset = Cinema_Chain.objects.all()
+    queryset = Cinema.objects.all()
     serializer_class = CinemaSerializer
