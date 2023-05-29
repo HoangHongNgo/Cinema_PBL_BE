@@ -25,6 +25,7 @@ class Cinema_Chain(models.Model):
 class Cinema(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=1000)
+    address = models.TextField()
     cinema_chain = models.ForeignKey(
         Cinema_Chain, null=True, blank=True, on_delete=models.SET_NULL, related_name='cinemas')
 
