@@ -24,6 +24,10 @@ class TicketDetailView(generics.RetrieveAPIView):
     serializer_class = TicketSerializer
 
 
+class TicketUpdatelView(generics.UpdateAPIView):
+    permission_classes = [AllowAny]
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
 class BuyTicketsAPIView(APIView):
     def post(self, request, *args, **kwargs):
         data = request.data
@@ -34,3 +38,6 @@ class BuyTicketsAPIView(APIView):
             return Response({"ticket_id": ticket.id, "message": "Ticket purchased successfully."})
         else:
             return Response(serializer.errors, status=400)
+
+
+
