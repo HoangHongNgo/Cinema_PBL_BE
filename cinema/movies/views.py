@@ -60,3 +60,19 @@ class MovieRdfAPIView(APIView):
         visualize(movie_graph)
 
         return Response()
+
+
+class MovieSearchView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        # Filter movies based on search query
+        queryset = self.queryset.filter(
+            models.Q(name__icontains=search_query) |
+            models.Q(description__icontains=search_query)
+            # Add more fields for searching here
+        )
+        return queryset
