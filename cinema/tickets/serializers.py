@@ -7,4 +7,4 @@ class TicketSerializer(serializers.ModelSerializer):
         model = Ticket
         fields = ['id', 'showtime', 'seat_num',
                   'seat_row', 'sale_date', 'price', 'owner']
-        depth = 2
+        depth = 3
