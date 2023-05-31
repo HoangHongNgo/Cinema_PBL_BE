@@ -1,5 +1,6 @@
-from rest_framework import serializers
+from rest_framework import serializers, generics
 from .models import Movie
+from django.db import models
 
 
 # class Base64ImageField(serializers.ImageField):
@@ -45,3 +46,6 @@ class MovieBannerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['banner_image']
+
+
+
