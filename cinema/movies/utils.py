@@ -16,15 +16,12 @@ def create_movie_graph():
     # Define your custom namespace
     namespace = Namespace('http://example.org/ontology#')
 
-    # Get all movies from the database
-    movies = Movie.objects.all()
-
     # Iterate over each movie and add it to the RDF graph
-    for movie in movies:
+    for movie in Movie.objects.all():
         # Create a URI for the movie using its ID
         movie_uri = namespace[str(movie.id)]
 
-        # Add triples for the movie
+        # Add triples for the movie to the RDF graph
         graph.add((movie_uri, RDF.type, namespace.Movie))
         graph.add((movie_uri, RDFS.label, Literal(movie.name)))
         graph.add((movie_uri, namespace.description,
@@ -45,15 +42,26 @@ def create_movie_graph():
                       Literal(cast.description)))
             # Add other properties of the cast to the RDF graph
 
-        # Add relationships with directors
-        for director in movie.directors.all():
-            director_uri = namespace[str(director.id)]
-            graph.add((movie_uri, namespace.hasDirector, director_uri))
-            graph.add((director_uri, RDF.type, namespace.Director))
-            graph.add((director_uri, RDFS.label, Literal(director.name)))
-            graph.add((director_uri, namespace.description,
-                      Literal(director.description)))
-            # Add other properties of the director to the RDF graph
+    # Iterate over each tag and add it to the RDF graph
+    for tag in Tag.objects.all():
+        # Create a URI for the tag using its ID
+        tag_uri = namespace[str(tag.id)]
+
+        # Add triples for the tag to the RDF graph
+        graph.add((tag_uri, RDF.type, namespace.Tag))
+        graph.add((tag_uri, RDFS.label, Literal(tag.name)))
+        # Add other properties of the tag to the RDF graph
+
+    # Iterate over each cast and add it to the RDF graph
+    for cast in Cast.objects.all():
+        # Create a URI for the cast using its ID
+        cast_uri = namespace[str(cast.id)]
+
+        # Add triples for the cast to the RDF graph
+        graph.add((cast_uri, RDF.type, namespace.Cast))
+        graph.add((cast_uri, RDFS.label, Literal(cast.name)))
+        graph.add((cast_uri, namespace.description, Literal(cast.description)))
+        # Add other properties of the cast to the RDF graph
 
     # Return the RDF graph
     return graph
