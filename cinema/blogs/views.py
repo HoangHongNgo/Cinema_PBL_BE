@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny
 class BlogView(generics.ListAPIView):
     permission_classes = [AllowAny]
     queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
+    serializer_class = BlogDisplaySerializer
 
 
 class BlogAddView(generics.CreateAPIView):
