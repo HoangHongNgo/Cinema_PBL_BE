@@ -21,10 +21,10 @@ class Blog(models.Model):
     categories = models.ManyToManyField(
         Category, blank=True)
     movies = models.ManyToManyField(
-        Movie, blank=True)
+        Movie, blank=True, null=True,)
 
 
 class BlogImage(models.Model):
     image = CloudinaryField('image')
     blog = models.ForeignKey(
-        Blog, on_delete=models.CASCADE, related_name='images', blank=True)
+        Blog, on_delete=models.CASCADE, related_name='images', blank=True, null=True,)
