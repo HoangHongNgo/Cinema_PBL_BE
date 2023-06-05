@@ -14,5 +14,5 @@ class BlogView(generics.ListAPIView):
 
 class BlogAddView(generics.CreateAPIView):
     permission_classes = [AllowAny]
-    queryset = Blog.objects.all()
+    queryset = Blog.objects.all().order_by('-id')
     serializer_class = BlogSerializer
