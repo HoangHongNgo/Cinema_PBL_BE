@@ -29,7 +29,7 @@ class UserLogin(APIView):
                 request=request, username=email, password=password)
             if user:
                 token, created = Token.objects.get_or_create(user=user)
-                return Response({'token': token.key})
+                return Response({'token': token.key, 'username': user.username, 'name': user.name})
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
