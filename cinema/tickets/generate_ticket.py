@@ -15,4 +15,4 @@ def create_tickets(sender, instance, created, **kwargs):
                     showtime=instance,
                     seat_row=row,
                     seat_num=num,
-                    price="10.00")
+                    price=instance.price)

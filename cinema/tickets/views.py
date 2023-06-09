@@ -14,21 +14,38 @@ class ListTicketView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Ticket.objects.all()
-        show_id = self.kwargs['pk']
-        queryset = queryset.filter(showtime_id=show_id)
+        show_id = getattr(self.kwargs, 'pk', None)
+        if show_id is not None:
+            queryset = queryset.filter(showtime_id=show_id)
+        return queryset
+
+class CreatePayment(generics.CreateAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = PaymentCreateSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+        return super().create(request, *args, **kwargs)
+
+class ListPaymentByUser(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = PaymentShowSerializer
+    lookup_field = 'owner'
+
+    def get_queryset(self):
+        queryset = Payment.objects.all()
+        owner_id = getattr(self.kwargs, 'owner_id', None)
+        if owner_id is not None:
+            queryset = queryset.filter(owner=owner_id)
         return queryset
 
 
-class TicketDetailView(generics.RetrieveAPIView):
+class PaymentUpdateView(generics.UpdateAPIView):
     permission_classes = [AllowAny]
-    queryset = Ticket.objects.first()
-    serializer_class = TicketSerializer
-
-
-class TicketUpdateView(generics.UpdateAPIView):
-    permission_classes = [AllowAny]
-    serializer_class = TicketSerializer
-    queryset = Ticket.objects.all()
+    serializer_class = PaymentCreateSerializer
 
     def update(self, request, *args, **kwargs):
         ticket = self.get_object()
@@ -48,13 +65,13 @@ class TicketUpdateView(generics.UpdateAPIView):
         return Response(serializer.data)
 
 
-class BuyTicketsAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        data = request.data
-        serializer = TicketSerializer(data=data)
+# class BuyTicketsAPIView(APIView):
+#     def post(self, request, *args, **kwargs):
+#         data = request.data
+#         serializer = TicketSerializer(data=data)
 
-        if serializer.is_valid():
-            ticket = serializer.save()
-            return Response({"ticket_id": ticket.id, "message": "Ticket purchased successfully."})
-        else:
-            return Response(serializer.errors, status=400)
+#         if serializer.is_valid():
+#             ticket = serializer.save()
+#             return Response({"ticket_id": ticket.id, "message": "Ticket purchased successfully."})
+#         else:
+#             return Response(serializer.errors, status=400)

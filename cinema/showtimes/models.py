@@ -11,3 +11,4 @@ class Showtime(models.Model):
         Cinema_Room, on_delete=models.SET_NULL, blank=True, null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    price = models.IntegerField(default=50)
