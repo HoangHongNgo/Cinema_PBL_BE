@@ -8,9 +8,15 @@ class TicketSerializer(serializers.ModelSerializer):
         fields = "__all__"
         depth = 2
 
-class PaymentSerializer(serializers.ModelSerializer):
+class PaymentCreateSerializer(serializers.ModelSerializer):
     tickets = TicketSerializer
     class Meta:
         model = Payment
         fields = ['owner', 'tickets']
-        
+
+class PaymentShowSerializer(serializers.ModelSerializer):
+    tickets = TicketSerializer
+    class Meta:
+        model = Payment
+        fields = ['tickets']
+        depth = 2

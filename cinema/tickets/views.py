@@ -21,7 +21,7 @@ class ListTicketView(generics.ListAPIView):
 
 class CreatePayment(generics.CreateAPIView):
     permission_classes = [AllowAny]
-    serializer_class = PaymentSerializer
+    serializer_class = PaymentCreateSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -32,7 +32,7 @@ class CreatePayment(generics.CreateAPIView):
 
 class ListPaymentByUser(generics.ListAPIView):
     permission_classes = [AllowAny]
-    serializer_class = PaymentSerializer
+    serializer_class = PaymentShowSerializer
     lookup_field = 'owner'
 
     def get_queryset(self):
@@ -45,7 +45,7 @@ class ListPaymentByUser(generics.ListAPIView):
 
 class PaymentUpdateView(generics.UpdateAPIView):
     permission_classes = [AllowAny]
-    serializer_class = PaymentSerializer
+    serializer_class = PaymentCreateSerializer
 
     def update(self, request, *args, **kwargs):
         ticket = self.get_object()
