@@ -44,7 +44,13 @@ class CreateOrUpdatePayment(generics.UpdateAPIView):
                 for ticket in ticket_data:
                     del ticket['payment']
 
-                return Response(ticket_data)
+                response_data = {
+                    'id': serializer.data.get('id'),
+                    'owner': serializer.data.get('owner'),
+                    'tickets': ticket_data
+                }
+
+                return Response(response_data)
             except Payment.DoesNotExist:
                 raise NotFound(detail='Payment not found.')
 
@@ -58,7 +64,13 @@ class CreateOrUpdatePayment(generics.UpdateAPIView):
         for ticket in ticket_data:
             del ticket['payment']
 
-        return Response(ticket_data)
+        response_data = {
+            'id': serializer.data.get('id'),
+            'owner': serializer.data.get('owner'),
+            'tickets': ticket_data
+        }
+
+        return Response(response_data)
 
 
 class ListPaymentByUser(generics.ListAPIView):
