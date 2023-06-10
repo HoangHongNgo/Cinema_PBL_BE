@@ -14,11 +14,12 @@ class ListTicketView(generics.ListAPIView):
     serializer_class = TicketSerializer
 
     def get_queryset(self):
-        queryset = Ticket.objects.all()
-        show_id = getattr(self.kwargs, 'pk', None)
-        if show_id is not None:
-            queryset = queryset.filter(showtime_id=show_id)
-        return queryset
+        queryset = Payment.objects.all()
+        owner_id = self.kwargs.get('owner')
+        if owner_id is not None:
+            queryset = queryset.filter(owner=owner_id)
+            return queryset
+        return None
 
 
 class CreateOrUpdatePayment(generics.UpdateAPIView):
