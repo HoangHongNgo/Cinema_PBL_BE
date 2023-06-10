@@ -6,7 +6,7 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = "__all__"
-        depth = 2
+        depth = 3
 
 
 class CreateOrUpdatePaymentSerializer(serializers.ModelSerializer):
