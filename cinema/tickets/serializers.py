@@ -38,4 +38,4 @@ class PaymentShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = ['id', 'tickets']
-        depth = 2
+        depth = 4
