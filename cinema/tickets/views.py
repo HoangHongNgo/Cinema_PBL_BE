@@ -37,7 +37,11 @@ class CreateOrUpdatePayment(generics.UpdateAPIView):
                 serializer = self.serializer_class(payment, data=request.data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-                return Response(serializer.data)
+                tickets_id = serializer.data.get('tickets')
+                tickets = Ticket.objects.filter(id__in=tickets_id)   
+                ticket_data = TicketSerializer1(tickets, many=True).data
+
+                return Response(ticket_data)
             except Payment.DoesNotExist:
                 raise NotFound(detail='Payment not found.')
 

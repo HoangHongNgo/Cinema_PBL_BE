@@ -9,8 +9,14 @@ class TicketSerializer(serializers.ModelSerializer):
         depth = 2
 
 
-class CreateOrUpdatePaymentSerializer(serializers.ModelSerializer):
+class TicketSerializer1(serializers.ModelSerializer):
+    class Meta:
+        model = Ticket
+        fields = "__all__"
+        depth = 1
 
+
+class CreateOrUpdatePaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = ('id', 'owner', 'tickets')
