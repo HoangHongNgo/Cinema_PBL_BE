@@ -6,5 +6,5 @@ urlpatterns = [
     # path('update/<int:pk>/', TicketUpdateView.as_view()),
     # path('ticket/<int:pk>/', TicketDetailView.as_view()),
     path('list/<int:owner>/', ListPaymentByUser.as_view()),
-    path('pay/', CreatePayment.as_view()),
+    path('pay/', CreateOrUpdatePayment.as_view()),
 ]
