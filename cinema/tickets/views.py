@@ -37,7 +37,14 @@ class CreateOrUpdatePayment(generics.UpdateAPIView):
                 serializer = self.serializer_class(payment, data=request.data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-                return Response(serializer.data)
+                tickets_id = serializer.data.get('tickets')
+                tickets = Ticket.objects.filter(id__in=tickets_id)
+                ticket_data = TicketSerializer(tickets, many=True).data
+
+                for ticket in ticket_data:
+                    del ticket['payment']
+
+                return Response(ticket_data)
             except Payment.DoesNotExist:
                 raise NotFound(detail='Payment not found.')
 
@@ -54,7 +61,8 @@ class ListPaymentByUser(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Payment.objects.all()
-        owner_id = getattr(self.kwargs, 'owner_id', None)
+        owner_id = self.kwargs.get('owner')
         if owner_id is not None:
             queryset = queryset.filter(owner=owner_id)
-        return queryset
+            return queryset
+        return None
