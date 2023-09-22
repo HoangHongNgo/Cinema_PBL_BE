@@ -12,10 +12,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tag',
+            name='Cast',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=115, unique=True)),
+                ('name', models.CharField(max_length=255)),
+                ('description', models.TextField()),
+                ('image_path', models.TextField()),
+                ('date_of_birth', models.DateField(auto_now_add=True)),
+                ('genre', models.CharField(max_length=255)),
             ],
         ),
     ]
